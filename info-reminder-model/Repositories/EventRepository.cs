@@ -3,14 +3,42 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using InfoReminder.Model.Entities;
+using InfoReminder.Model.Rest;
+using RestSharp;
 
 namespace InfoReminder.Model.Repositories
 {
     /// <summary>
-    /// Class used to manage events
+    /// Singleton class used to manage events
     /// </summary>
-    class EventRepository
+    public class EventRepository
     {
+        private InfoReminderWebApi _api;
+        private static EventRepository _instance;
+
+        /// <summary>
+        /// Returns repository instance
+        /// </summary>
+        public static EventRepository Instance {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new EventRepository();
+                }
+                
+                return _instance;
+            }
+        }
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        private EventRepository()
+        {
+            _api = new InfoReminderWebApi();
+        }
+
         /// <summary>
         /// Fetches upcoming events for specified user using passed credentials
         /// </summary>
@@ -19,7 +47,9 @@ namespace InfoReminder.Model.Repositories
         /// <returns>List of upcoming events</returns>
         public IList<Event> FetchUpcomingEvents(ClientCredentials credentials, bool markAsReaded)
         {
-            return new List<Event>();
+            RestRequest request = new RestRequest("upcoming_events.json");
+            _api.ClientCredentials = credentials;
+            return _api.Execute<List<Event>>(request);
         }
 
         /// <summary>
