@@ -5,9 +5,19 @@ using System.Text;
 
 namespace InfoReminder.Model.Entities
 {
+    /// <summary>
+    /// Represents event group
+    /// </summary>
     class Group
     {
+        /// <summary>
+        /// Gets or sets group name
+        /// </summary>
         public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets group description
+        /// </summary>
         public string Description { get; set; }
     }
 }
