@@ -8,7 +8,7 @@ namespace InfoReminder.Model.Entities
     /// <summary>
     /// Represents event group
     /// </summary>
-    class Group
+    public class Group
     {
         /// <summary>
         /// Gets or sets group name

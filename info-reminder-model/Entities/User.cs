@@ -8,7 +8,7 @@ namespace InfoReminder.Model.Entities
     /// <summary>
     /// Represents info-reminder web service user
     /// </summary>
-    class User
+    public class User
     {
         /// <summary>
         /// Gets or sets user id

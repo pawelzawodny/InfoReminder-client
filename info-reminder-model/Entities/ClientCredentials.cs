@@ -8,7 +8,7 @@ namespace InfoReminder.Model.Entities
     /// <summary>
     /// Represents data used to authenticate in web service
     /// </summary>
-    class ClientCredentials
+    public class ClientCredentials
     {
         /// <summary>
         /// Gets or sets user object
