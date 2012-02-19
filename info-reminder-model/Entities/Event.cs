@@ -11,6 +11,32 @@ namespace InfoReminder.Model.Entities
     public class Event
     {
         /// <summary>
+        /// Default constructor
+        /// </summary>
+        public Event()
+        {
+            Date = DateTime.Now;
+            Name = string.Empty;
+            Description = string.Empty;
+            Group = new Group();
+        }
+
+        /// <summary>
+        /// Full constructor
+        /// </summary>
+        /// <param name="name">Event name</param>
+        /// <param name="description">Full description</param>
+        /// <param name="date">Date of event</param>
+        /// <param name="group">Group this event belongs to</param>
+        public Event(string name, string description, DateTime date, Group group)
+        {
+            Name = name;
+            Description = description;
+            Date = date;
+            Group = group;
+        }
+
+        /// <summary>
         /// Gets or sets date when event starts
         /// </summary>
         public DateTime Date { get; set; }

@@ -11,6 +11,36 @@ namespace InfoReminder.Model.Entities
     public class ClientCredentials
     {
         /// <summary>
+        /// Default constructor
+        /// </summary>
+        public ClientCredentials()
+        {
+            User = new User();
+        }
+
+        /// <summary>
+        /// Full constructor
+        /// </summary>
+        /// <param name="user">User used to authenticate</param>
+        /// <param name="authToken">Secret authentication token</param>
+        public ClientCredentials(User user, string authToken)
+        {
+            User = user;
+            AuthToken = authToken;
+        }
+        
+        /// <summary>
+        /// Alternative constructor
+        /// </summary>
+        /// <param name="userId">Id of user used to authenticate</param>
+        /// <param name="userName">Username of user used to authenticate</param>
+        /// <param name="authToken">Secret authentication token</param>
+        public ClientCredentials(int userId, string userName, string authToken) : this(new User(userId, userName), authToken)
+        {
+           
+        }
+
+        /// <summary>
         /// Gets or sets user object
         /// </summary>
         public User User { get; set; }
