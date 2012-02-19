@@ -23,7 +23,7 @@ namespace InfoReminder.Model.Entities
         /// </summary>
         /// <param name="userId">User id</param>
         /// <param name="username">Username</param>
-        public User(int userId, string username)
+        public User(long userId, string username)
         {
             UserId = userId;
             Username = username;
