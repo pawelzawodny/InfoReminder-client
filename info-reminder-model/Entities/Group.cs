@@ -22,13 +22,20 @@ namespace InfoReminder.Model.Entities
         /// <summary>
         /// Full constructor
         /// </summary>
+        /// <param name="id">Group id</param>
         /// <param name="Name">Group name</param>
         /// <param name="Description">Description</param>
-        public Group(string name, string description)
+        public Group(long id, string name, string description)
         {
+            Id = id;
             Name = name;
             Description = description;
         }
+
+        /// <summary>
+        /// Gets or sets group id
+        /// </summary>
+        public long Id { get; set; }
 
         /// <summary>
         /// Gets or sets group name
