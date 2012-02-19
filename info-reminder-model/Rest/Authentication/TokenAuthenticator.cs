@@ -39,8 +39,17 @@ namespace InfoReminder.Model.Rest.Authentication
         public void Authenticate(IRestClient client, IRestRequest request)
         {
             string authPart = string.Format("{0:d}/{1:s}", Credentials.User.UserId, Credentials.AuthToken);
-            request.Resource = string.Format("{0:s}/{1:s}", request.Resource, authPart);
-            request.AddUrlSegment("Authentication", authPart);
+            
+            // If it's first request then we send authentication token
+            if (string.IsNullOrEmpty(Credentials.SessionId))
+            {
+                request.Resource = string.Format("{0:s}/{1:s}", request.Resource, authPart);
+            }
+            else
+            {
+                // If it's next request then we send session cookie instead of authentication token
+                request.AddCookie(InfoReminderWebApi.SessionCookieName, Credentials.SessionId);
+            }
         }
     }
 }

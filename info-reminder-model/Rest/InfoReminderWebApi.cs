@@ -24,6 +24,17 @@ namespace InfoReminder.Model.Rest
         }
 
         /// <summary>
+        /// Session cookie name
+        /// </summary>
+        public static string SessionCookieName
+        {
+            get
+            {
+                return "_info-reminder_session";
+            }
+        }
+
+        /// <summary>
         /// Base url to web service, default it's http://localhost:3000/client
         /// </summary>
         public string BaseUrl { get; set; }
@@ -78,6 +89,10 @@ namespace InfoReminder.Model.Rest
             request.RequestFormat = DataFormat.Json;
  
             RestResponse<T> response = client.Execute<T>(request);
+            
+            // Extracts session cookie for further requests
+            var session = response.Cookies.First((c) => { return c.Name.Equals(SessionCookieName); });
+            ClientCredentials.SessionId = session.Value;
 
             return response.Data;
         }
