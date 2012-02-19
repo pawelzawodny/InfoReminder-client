@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using InfoReminder.Model.Entities;
 
-namespace InfoReminder.Model.Entities
+namespace InfoReminder.Model.Rest.Authentication
 {
     /// <summary>
     /// Represents data used to authenticate in web service

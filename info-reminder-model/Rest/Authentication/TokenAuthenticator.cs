@@ -5,7 +5,7 @@ using System.Text;
 using InfoReminder.Model.Entities;
 using RestSharp;
 
-namespace InfoReminder.Model.Rest
+namespace InfoReminder.Model.Rest.Authentication
 {
     /// <summary>
     /// Authenticator used to authenticate in info-reminder web service (It requires user id and auth token)

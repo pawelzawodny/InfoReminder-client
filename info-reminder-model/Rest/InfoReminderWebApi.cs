@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using InfoReminder.Model.Entities;
+using InfoReminder.Model.Rest.Authentication;
 using RestSharp;
 
 namespace InfoReminder.Model.Rest

@@ -28,13 +28,19 @@ namespace InfoReminder.Model.Entities
         /// <param name="description">Full description</param>
         /// <param name="date">Date of event</param>
         /// <param name="group">Group this event belongs to</param>
-        public Event(string name, string description, DateTime date, Group group)
+        public Event(long id, string name, string description, DateTime date, Group group)
         {
+            Id = id;
             Name = name;
             Description = description;
             Date = date;
             Group = group;
         }
+
+        /// <summary>
+        /// Gets or sets event id
+        /// </summary>
+        public long Id { get; set; }
 
         /// <summary>
         /// Gets or sets date when event starts
