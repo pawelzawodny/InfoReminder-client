@@ -10,10 +10,21 @@ namespace InfoReminder.Model.Rest
     /// <summary>
     /// Class used to interact with info-reminder web service
     /// </summary>
-    class InfoReminderWebApi
+    public class InfoReminderWebApi
     {
         /// <summary>
-        /// Base url to web service, default it's http://localhost:3000
+        /// Default base url (http://localhost:3000/client)
+        /// </summary>
+        public static string DefaultBaseUrl 
+        {
+            get 
+            { 
+                return "http://localhost:3000/client";
+            }
+        }
+
+        /// <summary>
+        /// Base url to web service, default it's http://localhost:3000/client
         /// </summary>
         public string BaseUrl { get; set; }
 
@@ -27,7 +38,30 @@ namespace InfoReminder.Model.Rest
         /// </summary>
         public InfoReminderWebApi()
         {
-            BaseUrl = "http://localhost:3000/client";
+            BaseUrl = DefaultBaseUrl;
+            ClientCredentials = new ClientCredentials();
+        }
+
+        /// <summary>
+        /// Full constructor
+        /// </summary>
+        /// <param name="baseUrl">Url of web service</param>
+        /// <param name="credentials">Credentials used to authenticate in web service</param>
+        public InfoReminderWebApi(string baseUrl, ClientCredentials credentials)
+        {
+            BaseUrl = baseUrl;
+            ClientCredentials = credentials;
+        }
+
+        /// <summary>
+        /// Alternative constructor
+        /// </summary>
+        /// <param name="baseUrl">Url of web service</param>
+        /// <param name="userId">Id of user used to authenticate requests</param>
+        /// <param name="authToken">Authentication token</param>
+        public InfoReminderWebApi(string baseUrl, int userId, string authToken) : this(baseUrl, new ClientCredentials(userId, string.Empty, authToken))
+        {
+            
         }
 
         /// <summary>

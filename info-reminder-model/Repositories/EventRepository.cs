@@ -13,7 +13,6 @@ namespace InfoReminder.Model.Repositories
     /// </summary>
     public class EventRepository
     {
-        private InfoReminderWebApi _api;
         private static EventRepository _instance;
 
         /// <summary>
@@ -36,27 +35,27 @@ namespace InfoReminder.Model.Repositories
         /// </summary>
         private EventRepository()
         {
-            _api = new InfoReminderWebApi();
+
         }
 
         /// <summary>
         /// Fetches upcoming events for specified user using passed credentials
         /// </summary>
-        /// <param name="credentials">Credentials used to authenticate and authorise action</param>
+        /// <param name="api">Api instance used to make requests</param>
         /// <param name="markAsReaded">Indicates whether fetched events should be marked as readed on server side</param>
         /// <returns>List of upcoming events</returns>
-        public IList<Event> FetchUpcomingEvents(ClientCredentials credentials, bool markAsReaded)
+        public IList<Event> FetchUpcomingEvents(InfoReminderWebApi api, bool markAsReaded)
         {
             RestRequest request = new RestRequest("upcoming_events.json");
-            _api.ClientCredentials = credentials;
-            return _api.Execute<List<Event>>(request);
+            return api.Execute<List<Event>>(request);
         }
 
         /// <summary>
         /// Marks event as readed on server side
         /// </summary>
+        /// <param name="api">Api instance used to make requests</param>
         /// <param name="readedEvent">Event object</param>
-        public void MarkAsReaded(Event readedEvent)
+        public void MarkAsReaded(InfoReminderWebApi api, Event readedEvent)
         {
 
         }
