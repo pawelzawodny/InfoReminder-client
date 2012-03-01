@@ -11,17 +11,28 @@ namespace InfoReminder.Model.Repositories
     /// <summary>
     /// Repository used to manage groups
     /// </summary>
-    public static class GroupRepository
+    public class GroupRepository
     {
+        private InfoReminderWebApi _api;
+
+        /// <summary>
+        /// Repository constructor
+        /// </summary>
+        /// <param name="api">Api used to communicate with service</param>
+        public GroupRepository(InfoReminderWebApi api)
+        {
+            _api = api;
+        }
+
         /// <summary>
         /// Fetches all user groups (owned by him and groups where he has membership)
         /// </summary>
         /// <param name="api">Api object used to make request</param>
         /// <returns>List of user groups</returns>
-        public static IList<Group> FetchUserGroups(InfoReminderWebApi api)
+        public IList<Group> FetchUserGroups()
         {
             RestRequest request = new RestRequest("groups.json");
-            return api.Execute<List<Group>>(request);
+            return _api.Execute<List<Group>>(request);
         }
     }
 }
