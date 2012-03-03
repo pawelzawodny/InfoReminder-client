@@ -37,6 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,6 +56,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Configuration\ClientCredentialsElement.cs" />
+    <Compile Include="Configuration\InfoReminderSection.cs" />
     <Compile Include="Events\EventsChangedEventArgs.cs" />
     <Compile Include="Util\EventMonitor.cs" />
     <Compile Include="Util\Configuration.cs" />

@@ -30,7 +30,7 @@ namespace InfoReminder.Client.ViewModels
         /// </summary>
         public UpcomingEventsViewModel()
         {
-            _service = new EventRepository(Configuration.Instance.Api);
+            _service = new EventRepository(Util.Configuration.Instance.Api);
             Event = new Event(2, "Test", "descr", DateTime.Now, null);
             List<Event> events = new List<Event>();
             events.Add(Event);

@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Configuration;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using InfoReminder.Model.Rest;
 using InfoReminder.Model.Rest.Authentication;
+using InfoReminder.Client.Configuration;
 
 namespace InfoReminder.Client.Util
 {
@@ -13,6 +15,7 @@ namespace InfoReminder.Client.Util
     public class Configuration
     {
         private static Configuration _instance;
+        private InfoReminderSection _configSection;
         
         /// <summary>
         /// Returns the only instance of this class
@@ -35,9 +38,8 @@ namespace InfoReminder.Client.Util
         /// </summary>
         public Configuration()
         {
-            // TODO: Load credentials from .config file
-            ClientCredentials cred = new ClientCredentials(1, "szygi", "42a3d139546587fce152c892292ce46c5d0aa330");
-            Api = new InfoReminderWebApi(InfoReminderWebApi.DefaultBaseUrl, cred);
+            _configSection = ConfigurationManager.GetSection("infoReminder") as InfoReminderSection;
+            Api = new InfoReminderWebApi(InfoReminderWebApi.DefaultBaseUrl, _configSection.ClientCredentials.ClientCredentials);
         }
 
         /// <summary>

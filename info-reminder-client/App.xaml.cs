@@ -23,8 +23,8 @@ namespace InfoReminder.Client
         {
             _window = new UpcomingEventsWindow();
 
-            _eventMonitor = new EventMonitor(Configuration.Instance.Api);
-            _eventMonitor.Interval = Configuration.Instance.MonitorInterval;
+            _eventMonitor = new EventMonitor(Util.Configuration.Instance.Api);
+            _eventMonitor.Interval = Util.Configuration.Instance.MonitorInterval;
             _eventMonitor.EventsChanged += new EventHandler<EventsChangedEventArgs>(EventsArrived);
             _eventMonitor.Start();
         } 
