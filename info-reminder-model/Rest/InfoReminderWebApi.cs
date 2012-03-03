@@ -91,10 +91,14 @@ namespace InfoReminder.Model.Rest
             RestResponse<T> response = client.Execute<T>(request);
             
             // Extracts session cookie for further requests
-            var session = response.Cookies.First((c) => { return c.Name.Equals(SessionCookieName); });
-            ClientCredentials.SessionId = session.Value;
+            if (response.Cookies.Count > 0)
+            {
+                var session = response.Cookies.First((c) => { return c.Name.Equals(SessionCookieName); });
+                ClientCredentials.SessionId = session.Value;
+            }
 
             return response.Data;
         }
     }
 }
+

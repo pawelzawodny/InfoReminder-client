@@ -17,9 +17,12 @@ namespace InfoReminder.Client
     public partial class App : Application
     {
         private EventMonitor _eventMonitor;
+        private UpcomingEventsWindow _window;
 
         protected override void OnStartup(StartupEventArgs e)
         {
+            _window = new UpcomingEventsWindow();
+
             _eventMonitor = new EventMonitor(Configuration.Instance.Api);
             _eventMonitor.Interval = Configuration.Instance.MonitorInterval;
             _eventMonitor.EventsChanged += new EventHandler<EventsChangedEventArgs>(EventsArrived);
@@ -28,10 +31,13 @@ namespace InfoReminder.Client
 
         protected void EventsArrived(object source, EventsChangedEventArgs args)
         {
-            UpcomingEventsWindow window = new UpcomingEventsWindow();
-            UpcomingEventsViewModel viewModel = window.Resources["ViewModel"] as UpcomingEventsViewModel;
+            UpcomingEventsViewModel viewModel = _window.Resources["ViewModel"] as UpcomingEventsViewModel;
             viewModel.UpcomingEvents = args.Events;
-            window.Show();
+            Dispatcher.Invoke(
+                new Action(() => {
+                    _window.Show();
+                })
+            );
         }
     }
 }

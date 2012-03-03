@@ -32,7 +32,13 @@ namespace InfoReminder.Model.Repositories
         public IList<Event> FetchUpcomingEvents(bool markAsReaded)
         {
             RestRequest request = new RestRequest("upcoming_events.json");
-            return _api.Execute<List<Event>>(request);
+            IList<Event> events = _api.Execute<List<Event>>(request);
+            if (events == null)
+            {
+                events = new List<Event>();
+            }
+
+            return events;
         }
 
         /// <summary>

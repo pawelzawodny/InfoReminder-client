@@ -2,12 +2,27 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:InfoReminder.Client.ViewModels"
-        Title="Window1" Height="300" Width="300">
+        Title="Upcoming Events" Height="300" Width="300">
     <Window.Resources>
-        <vm:UpcomingEventsViewModel x:Key="upcomingEvents"/>
+        <vm:UpcomingEventsViewModel x:Key="ViewModel"/>
+        <DataTemplate x:Key="EventItemTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label Content="{Binding Path=Date}" Grid.Column="0" Grid.Row="0" />
+                <Label Content="{Binding Path=Name}" Grid.Column="1" Grid.Row="0"/>
+                <Label Content="{Binding Path=Description}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" />
+            </Grid>
+        </DataTemplate>
     </Window.Resources>
     <Window.DataContext>
-        <Binding Source="{StaticResource upcomingEvents}" />
+        <Binding Source="{StaticResource ViewModel}" />
     </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -17,12 +32,8 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <ListBox Grid.Column="0" Grid.Row="0" ItemsSource="{Binding Path=UpcomingEvents}">
-
+        <ListBox Grid.Column="0" Grid.Row="0" ItemsSource="{Binding Path=UpcomingEvents}" ItemTemplate="{StaticResource ResourceKey=EventItemTemplate}">
         </ListBox>
-        
-        <Label Name="Name" Grid.Column="0" Grid.Row="1" Content="{Binding Path=Event.Description}"></Label>
     </Grid>
 </Window>
