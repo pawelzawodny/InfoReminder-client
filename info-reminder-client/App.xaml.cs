@@ -32,9 +32,15 @@ namespace InfoReminder.Client
         protected void EventsArrived(object source, EventsChangedEventArgs args)
         {
             UpcomingEventsViewModel viewModel = _window.Resources["ViewModel"] as UpcomingEventsViewModel;
-            viewModel.UpcomingEvents = args.Events;
+            
             Dispatcher.Invoke(
                 new Action(() => {
+                    viewModel.UpcomingEvents.Clear();
+                    foreach(Event e in args.Events) 
+                    {
+                        viewModel.UpcomingEvents.Add(e);
+                    }
+
                     _window.Show();
                 })
             );

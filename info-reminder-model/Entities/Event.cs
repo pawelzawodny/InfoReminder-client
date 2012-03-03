@@ -16,7 +16,7 @@ namespace InfoReminder.Model.Entities
         public Event()
         {
             Date = DateTime.Now;
-            Name = string.Empty;
+            Title = string.Empty;
             Description = string.Empty;
             Group = new Group();
         }
@@ -24,14 +24,14 @@ namespace InfoReminder.Model.Entities
         /// <summary>
         /// Full constructor
         /// </summary>
-        /// <param name="name">Event name</param>
+        /// <param name="title">Event name</param>
         /// <param name="description">Full description</param>
         /// <param name="date">Date of event</param>
         /// <param name="group">Group this event belongs to</param>
-        public Event(long id, string name, string description, DateTime date, Group group)
+        public Event(long id, string title, string description, DateTime date, Group group)
         {
             Id = id;
-            Name = name;
+            Title = title;
             Description = description;
             Date = date;
             Group = group;
@@ -50,7 +50,7 @@ namespace InfoReminder.Model.Entities
         /// <summary>
         /// Gets or sets short name of event
         /// </summary>
-        public string Name { get; set; }
+        public string Title { get; set; }
 
         /// <summary>
         /// Gets or sets full description

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using InfoReminder.Model.Repositories;
@@ -18,7 +19,7 @@ namespace InfoReminder.Client.ViewModels
         /// <summary>
         /// Gets or setslist of upcoming events
         /// </summary>
-        public IEnumerable<Event> UpcomingEvents { get; set; }
+        public ObservableCollection<Event> UpcomingEvents { get; set; }
 
         /// <summary>
         /// Gets or sets current event
@@ -31,10 +32,8 @@ namespace InfoReminder.Client.ViewModels
         public UpcomingEventsViewModel()
         {
             _service = new EventRepository(Util.Configuration.Instance.Api);
-            Event = new Event(2, "Test", "descr", DateTime.Now, null);
-            List<Event> events = new List<Event>();
-            events.Add(Event);
-            UpcomingEvents = events;
+
+            UpcomingEvents = new ObservableCollection<Event>();
         }
     }
 }

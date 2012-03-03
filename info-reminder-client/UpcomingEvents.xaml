@@ -16,7 +16,7 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 <Label Content="{Binding Path=Date}" Grid.Column="0" Grid.Row="0" />
-                <Label Content="{Binding Path=Name}" Grid.Column="1" Grid.Row="0"/>
+                <Label Content="{Binding Path=Title}" Grid.Column="1" Grid.Row="0"/>
                 <Label Content="{Binding Path=Description}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" />
             </Grid>
         </DataTemplate>
