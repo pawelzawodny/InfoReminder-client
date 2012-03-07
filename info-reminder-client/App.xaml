@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:util="clr-namespace:InfoReminder.Client.Util"
              xmlns:client="clr-namespace:InfoReminder.Client"
+             ShutdownMode="OnExplicitShutdown"
              >
     <Application.Resources>
     </Application.Resources>

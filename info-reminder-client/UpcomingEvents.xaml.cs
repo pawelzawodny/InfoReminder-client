@@ -22,5 +22,15 @@ namespace InfoReminder.Client
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// Hides window instead of closing it
+        /// </summary>
+        /// <param name="e">Event parameters</param>
+        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            Hide();
+        }
     }
 }
