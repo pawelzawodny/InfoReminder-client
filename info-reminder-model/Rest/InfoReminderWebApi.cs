@@ -13,13 +13,13 @@ namespace InfoReminder.Model.Rest
     public class InfoReminderWebApi
     {
         /// <summary>
-        /// Default base url (http://localhost:3000/client)
+        /// Default base url (http://inforeminder:3000/client)
         /// </summary>
         public static string DefaultBaseUrl 
         {
             get 
             { 
-                return "http://localhost:3000/client";
+                return "http://inforeminder:3000/client";
             }
         }
 
@@ -35,7 +35,7 @@ namespace InfoReminder.Model.Rest
         }
 
         /// <summary>
-        /// Base url to web service, default it's http://localhost:3000/client
+        /// Base url to web service, default it's http://inforeminder:3000/client
         /// </summary>
         public string BaseUrl { get; set; }
 
