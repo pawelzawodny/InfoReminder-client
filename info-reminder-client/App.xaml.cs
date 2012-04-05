@@ -42,6 +42,7 @@ namespace InfoReminder.Client
                     }
 
                     _window.Show();
+                    _window.Activate();
                 })
             );
         }

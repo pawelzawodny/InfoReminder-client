@@ -4,6 +4,7 @@
         xmlns:vm="clr-namespace:InfoReminder.Client.ViewModels"
         Title="Upcoming Events" Height="300" Width="300"
         Icon="icon.png"
+        WindowStartupLocation="CenterScreen"
         >
     <Window.Resources>
         <vm:UpcomingEventsViewModel x:Key="ViewModel"/>
