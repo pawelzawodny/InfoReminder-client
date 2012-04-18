@@ -64,8 +64,15 @@ namespace InfoReminder.Model.Entities
 
         public override bool Equals(object obj)
         {
-            Event other = (Event)obj;
-            return Equals(other);
+            if (obj is Event)
+            {
+                Event other = (Event)obj;
+                return Equals(other);
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public bool Equals(Event other)

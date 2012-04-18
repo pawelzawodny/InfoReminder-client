@@ -49,9 +49,15 @@ namespace InfoReminder.Model.Entities
 
         public override bool Equals(object obj)
         {
-            Group other = (Group)obj;
-
-            return Equals(other);
+            if (obj is Group)
+            {
+                Group other = (Group)obj;
+                return Equals(other);
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public bool Equals(Group other)

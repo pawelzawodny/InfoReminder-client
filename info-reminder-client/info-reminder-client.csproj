@@ -61,6 +61,7 @@
     <Compile Include="Events\EventsChangedEventArgs.cs" />
     <Compile Include="Util\EventMonitor.cs" />
     <Compile Include="Util\Configuration.cs" />
+    <Compile Include="Util\RepositoryProvider.cs" />
     <Compile Include="ViewModels\EventViewModel.cs" />
     <Compile Include="ViewModels\UpcomingEventsViewModel.cs" />
     <Compile Include="UpcomingEvents.xaml.cs">

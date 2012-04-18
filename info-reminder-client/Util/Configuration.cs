@@ -57,5 +57,16 @@ namespace InfoReminder.Client.Util
                 return new TimeSpan(0, 1, 0);
             }
         }
+
+        /// <summary>
+        /// Returns true if debug mode is enabled
+        /// </summary>
+        public bool DebugEnabled 
+        {
+            get
+            {
+                return true;
+            }
+        }
     }
 }

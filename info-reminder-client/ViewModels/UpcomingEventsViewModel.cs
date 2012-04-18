@@ -14,7 +14,7 @@ namespace InfoReminder.Client.ViewModels
     /// </summary>
     class UpcomingEventsViewModel
     {
-        private EventRepository _service;
+        private IEventRepository _service;
 
         /// <summary>
         /// Gets or setslist of upcoming events
@@ -31,8 +31,7 @@ namespace InfoReminder.Client.ViewModels
         /// </summary>
         public UpcomingEventsViewModel()
         {
-            _service = new EventRepository(Util.Configuration.Instance.Api);
-
+            _service = RepositoryProvider.GetEventRepository();
             UpcomingEvents = new ObservableCollection<Event>();
         }
     }

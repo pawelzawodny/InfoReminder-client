@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Timers;
 using InfoReminder.Model.Repositories;
+using InfoReminder.Model.Repositories.Rest;
+using InfoReminder.Model.Repositories.Test;
 using InfoReminder.Model.Rest;
 using InfoReminder.Model.Entities;
 using InfoReminder.Client.Events;
@@ -16,7 +18,7 @@ namespace InfoReminder.Client.Util
     class EventMonitor
     {
         private Timer _timer;
-        private EventRepository _repository;
+        private IEventRepository _repository;
 
         /// <summary>
         /// Triggered when new events shows up on web service
@@ -29,7 +31,7 @@ namespace InfoReminder.Client.Util
         /// <param name="api">Api object used to communicate with web service</param>
         public EventMonitor(InfoReminderWebApi api)
         {
-            _repository = new EventRepository(api);
+            _repository = RepositoryProvider.GetEventRepository();
             _timer = new Timer();
             _timer.Elapsed += new ElapsedEventHandler(TimerElapsed);
         }
