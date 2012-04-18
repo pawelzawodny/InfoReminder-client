@@ -61,5 +61,26 @@ namespace InfoReminder.Model.Entities
         /// Gets or sets group this event belongs to
         /// </summary>
         public Group Group { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            Event other = (Event)obj;
+            return Equals(other);
+        }
+
+        public bool Equals(Event other)
+        {
+            return
+                this.Id == other.Id &&
+                this.Title.Equals(other.Title) &&
+                this.Date.Equals(other.Date) &&
+                this.Description.Equals(other.Description) &&
+                this.Group.Equals(other.Group);
+        }
+
+        public override int GetHashCode()
+        {
+            return ((int)(this.Id + this.Group.Id) + this.Description.Length);
+        }
     }
 }

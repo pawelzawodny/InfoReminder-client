@@ -46,5 +46,24 @@ namespace InfoReminder.Model.Entities
         /// Gets or sets group description
         /// </summary>
         public string Description { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            Group other = (Group)obj;
+
+            return Equals(other);
+        }
+
+        public bool Equals(Group other)
+        {
+            return
+                this.Id == other.Id &&
+                this.Name == other.Name;
+        }
+
+        public override int GetHashCode()
+        {
+            return (int)(this.Id + this.Name.Length);
+        }
     }
 }
