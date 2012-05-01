@@ -35,9 +35,14 @@ namespace InfoReminder.Client
             
             Dispatcher.Invoke(
                 new Action(() => {
-                    viewModel.UpcomingEvents.Clear();
                     foreach(Event e in args.Events) 
                     {
+                        Event foundEvent = FindEventByIdInList(viewModel.UpcomingEvents, e.Id);
+                        if (foundEvent != null)
+                        {
+                            viewModel.UpcomingEvents.Remove(foundEvent);
+                        }
+
                         viewModel.UpcomingEvents.Add(e);
                     }
 
@@ -45,6 +50,13 @@ namespace InfoReminder.Client
                     _window.Activate();
                 })
             );
+        }
+
+        private Event FindEventByIdInList(System.Collections.ObjectModel.ObservableCollection<Event> events, long id)
+        {
+            return (from e in events 
+                   where e.Id == id 
+                   select e).FirstOrDefault();
         }
     }
 }

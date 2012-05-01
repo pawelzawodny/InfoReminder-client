@@ -6,6 +6,7 @@ namespace InfoReminder.Model.Repositories
     public interface IEventRepository
     {
         IList<Event> FetchUpcomingEvents(bool markAsReaded);
-        void MarkAsReaded(Event readedEvent);
+        void AcceptNotification(Event ev);
+        void AcceptNotifications(IList<Event> events);
     }
 }

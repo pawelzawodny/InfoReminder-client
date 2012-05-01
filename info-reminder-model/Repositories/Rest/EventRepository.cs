@@ -42,13 +42,27 @@ namespace InfoReminder.Model.Repositories.Rest
         }
 
         /// <summary>
-        /// Marks event as readed on server side
+        /// Accepts notification
         /// </summary>
-        /// <param name="api">Api instance used to make requests</param>
-        /// <param name="readedEvent">Event object</param>
-        public void MarkAsReaded(Event readedEvent)
+        /// <param name="acceptedEvent">Event object</param>
+        public void AcceptNotification(Event acceptedEvent)
         {
 
+        }
+
+        public void AcceptNotifications(IList<Event> acceptedEvents)
+        {
+            RestRequest request = new RestRequest("accept_notifications.json");
+            AddEventIdsToRequest(request, acceptedEvents);
+            _api.Execute<Object>(request);
+        }
+
+        private void AddEventIdsToRequest(RestRequest request, IList<Event> acceptedEvents)
+        {
+            foreach(Event eventObj in acceptedEvents) 
+            {
+                request.AddParameter("event_ids[]", eventObj.Id);
+            }
         }
     }
 }

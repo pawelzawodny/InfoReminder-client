@@ -52,9 +52,12 @@ namespace InfoReminder.Model.Repositories.Test
             return _events;
         }
 
-        public void MarkAsReaded(Entities.Event readedEvent)
+        public void AcceptNotification(Event e)
         {
-            return;
+        }
+
+        public void AcceptNotifications(IList<Event> events)
+        {
         }
     }
 }

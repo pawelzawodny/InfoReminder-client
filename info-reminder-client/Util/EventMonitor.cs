@@ -74,6 +74,8 @@ namespace InfoReminder.Client.Util
             if (events.Count > 0)
             {
                 EventsChanged(this, new EventsChangedEventArgs(events));
+                
+                _repository.AcceptNotifications(events);
             }
         }
     }
